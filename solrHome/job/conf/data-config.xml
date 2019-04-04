@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<dataConfig>   
+<dataSource type="JdbcDataSource"   
+		  driver="com.mysql.jdbc.Driver"   
+		  url="jdbc:mysql://localhost:3306/djy_renbaojituan?useSSL=false"   
+		  user="root"   
+		  password="root"/>   
+<document>   
+	<entity name="product" query="select m.uuid uuid,m.title title,m.address address,m.topic topic,c.content content from meeting_main m LEFT JOIN meeting_content c ON m.uuid=c.mainId;">
+		 <field column="uuid" name="id"/> 
+		 <field column="title" name="title_ik"/> 
+		 <field column="address" name="address_ik"/> 
+		 <field column="topic" name="topic_ik"/> 
+		 <field column="content" name="content_ik"/> 
+	</entity>   
+</document>   
+</dataConfig>
