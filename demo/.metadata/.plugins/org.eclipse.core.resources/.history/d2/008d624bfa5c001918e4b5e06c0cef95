@@ -1,0 +1,37 @@
+package com.xiangym;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URISyntaxException;
+
+import org.apache.commons.compress.utils.IOUtils;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FSDataInputStream;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.junit.Test;
+
+public class Hdaoop {
+
+	
+	@Test
+	public void upload() {
+		System.out.println("上传开始");
+		Configuration con = new Configuration();
+		
+		try {
+			FileSystem fs = FileSystem.get(con);
+			//URI uri = new URI("hdfs://39.97.229.103:50070/");
+			//fs.get(uri, con);
+			Path path = new Path("hdfs://39.97.229.103:9000/input/qing.txt");
+			FSDataInputStream in = fs.open(path);
+			FileOutputStream fot = new FileOutputStream("D:\\hadoop");
+			IOUtils.copy(in, fot);
+			
+		//	fs.copy
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

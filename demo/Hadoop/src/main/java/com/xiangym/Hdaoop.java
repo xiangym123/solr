@@ -1,0 +1,41 @@
+package com.xiangym;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import org.apache.commons.compress.utils.IOUtils;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FSDataOutputStream;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.junit.Before;
+import org.junit.Test;
+
+public class Hdaoop {
+	FileSystem fs =null;
+	@Before
+	public void init() throws URISyntaxException, IOException, InterruptedException {
+		Configuration con = new Configuration();
+		URI uri = new URI("hdfs://39.97.229.103:9000/");
+	    fs = FileSystem.get(uri,con,"root");
+	}
+	
+	
+	@Test
+	public void upload()  {
+		
+		try {
+			
+			fs.copyFromLocalFile(new Path("D:\\hadoop\\linux√¸¡Ó.txt"), new Path("hdfs://39.97.229.103:9000/lin12323ux√¸¡Ó11111111111111.txt"));
+			
+			
+		//	fs.copy
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,27 @@
+package com.xiangym;
+
+import java.io.IOException;
+import java.net.URI;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
+import org.junit.Test;
+
+public class Hdaoop {
+
+	
+	@Test
+	public void upload() {
+		System.out.println("上传开始");
+		Configuration con = new Configuration();
+		
+		try {
+			FileSystem fs = FileSystem.get(con);
+			URI uri = new URI("");
+			fs.get(uri, conf)
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

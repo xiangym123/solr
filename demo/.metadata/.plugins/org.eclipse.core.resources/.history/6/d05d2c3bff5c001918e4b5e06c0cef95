@@ -1,0 +1,44 @@
+package com.xiangym;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+import org.apache.commons.compress.utils.IOUtils;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FSDataOutputStream;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.junit.Test;
+
+public class Hdaoop {
+
+	public void init() {
+		
+	}
+	
+	
+	@Test
+	public void upload() throws InterruptedException, URISyntaxException {
+		System.out.println("上传开始");
+		Configuration con = new Configuration();
+		
+		try {
+			URI uri = new URI("hdfs://39.97.229.103:9000/");
+
+			FileSystem fs = FileSystem.get(uri,con,"root");
+			//URI uri = new URI("hdfs://39.97.229.103:50070/");
+			//fs.get(uri, con);
+			Path path = new Path("hdfs://39.97.229.103:9000/input/linux命令.txt");
+			FSDataOutputStream os=fs.create(path);
+			FileInputStream file= new FileInputStream(new File("D:\\hadoop\\linux命令.txt"));
+			IOUtils.copy(file, os);
+		//	fs.copy
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

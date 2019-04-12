@@ -1,0 +1,8 @@
+package com.xiangym.demo;
+
+public class Test {
+	
+	public void upload() {
+		
+	}
+}
